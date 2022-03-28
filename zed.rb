@@ -16,7 +16,6 @@ and orchestrating Zed data lakes.
 
       def install
         bin.install "zed"
-        bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
@@ -25,7 +24,6 @@ and orchestrating Zed data lakes.
 
       def install
         bin.install "zed"
-        bin.install "zq"
       end
     end
   end
@@ -37,7 +35,6 @@ and orchestrating Zed data lakes.
 
       def install
         bin.install "zed"
-        bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
@@ -46,7 +43,6 @@ and orchestrating Zed data lakes.
 
       def install
         bin.install "zed"
-        bin.install "zq"
       end
     end
   end
