@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.0.0"
+  version "1.1.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.0.0/zed-v1.0.0.darwin-arm64.tar.gz"
-      sha256 "730dfbefc5a5e6ff9b9401c5830e5bbc39682bf089204e650c5cf56e55182021"
+      url "https://github.com/brimdata/zed/releases/download/v1.1.0/zed-v1.1.0.darwin-arm64.tar.gz"
+      sha256 "69c72f548e7b8a9e819791e52385d178f99e9f40c4854fdc725e14cefd871704"
 
       def install
         bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.0.0/zed-v1.0.0.darwin-amd64.tar.gz"
-      sha256 "a2078ae2fb4990e5a31a30e8f34e8b008e3ac75443f03fa3e4e3076d41503438"
+      url "https://github.com/brimdata/zed/releases/download/v1.1.0/zed-v1.1.0.darwin-amd64.tar.gz"
+      sha256 "68aadc5407251a434e84aff8901a478c415f0868c048a2d18475de5f9507e034"
 
       def install
         bin.install "zq"
@@ -31,16 +31,16 @@ query language.
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.0.0/zed-v1.0.0.linux-arm64.tar.gz"
-      sha256 "f4a6a4dac28b1829467628af134e4456bc3b6aa90929e42e93c951fa424047c3"
+      url "https://github.com/brimdata/zed/releases/download/v1.1.0/zed-v1.1.0.linux-arm64.tar.gz"
+      sha256 "4d2cf61d30b5d9f4913736504aab0b89f5bb7bf89341353d5d5e5a1256279ada"
 
       def install
         bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.0.0/zed-v1.0.0.linux-amd64.tar.gz"
-      sha256 "8285e2e533a91c69b45457bae9bc9da2b20152f02112389879e2a6ffa065d22f"
+      url "https://github.com/brimdata/zed/releases/download/v1.1.0/zed-v1.1.0.linux-amd64.tar.gz"
+      sha256 "025229e7e74df8cb4669f2081d37b866bb0b4f64e1a17f1ac65972ed1f50c816"
 
       def install
         bin.install "zq"
