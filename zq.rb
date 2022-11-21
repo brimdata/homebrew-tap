@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.2.0"
+  version "1.3.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.2.0/zed-v1.2.0.darwin-amd64.tar.gz"
-      sha256 "104d34b7256deebef49173df196e47234df43c839843ef8d535e1c10880707cb"
+    if Hardware::CPU.arm?
+      url "https://github.com/brimdata/zed/releases/download/v1.3.0/zed-v1.3.0.darwin-arm64.tar.gz"
+      sha256 "834770f9f859d4e8ba73db028ffe84a455eca50eb6206e67034778df73087207"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.2.0/zed-v1.2.0.darwin-arm64.tar.gz"
-      sha256 "4c03ce5a6ae1a0fb70fe243ab777c20fb61e30d4bbaf1896381cc476970adfee"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.3.0/zed-v1.3.0.darwin-amd64.tar.gz"
+      sha256 "a361a11f296d326038df1c3cbbb31dbb665aeaabe345b3397ee975314410ce79"
 
       def install
         bin.install "zq"
@@ -30,17 +30,17 @@ query language.
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.2.0/zed-v1.2.0.linux-arm64.tar.gz"
-      sha256 "8e9df697db06238f2239162c8595838e9436eda80fb403c35d9543c1a3c669a2"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.3.0/zed-v1.3.0.linux-amd64.tar.gz"
+      sha256 "1a6d89a26d78ac3405bfca4ebd35087851b29c2be3f5708e52f4200d3f89a7f4"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.2.0/zed-v1.2.0.linux-amd64.tar.gz"
-      sha256 "a77fcc6491672806d1fd0124303db3998cfbd3d3df3f26cbd08d3fee7f659102"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brimdata/zed/releases/download/v1.3.0/zed-v1.3.0.linux-arm64.tar.gz"
+      sha256 "3a6a152063f053fc4d8ed6b8c79e3d804eb8b5e330974506f1ff1380b80632e0"
 
       def install
         bin.install "zq"
