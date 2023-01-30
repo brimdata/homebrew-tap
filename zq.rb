@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.4.0"
+  version "1.5.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.4.0/zed-v1.4.0.darwin-arm64.tar.gz"
-      sha256 "6320a20bed4b2bfd170de0beeafc3b33d7818eb5f0825ebaccec8697cd0233aa"
+      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.darwin-arm64.tar.gz"
+      sha256 "dbd3722c5d2b022f974ad1499ed49136aaaf806f67cc9373d2d749c05745b88b"
 
       def install
         bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.4.0/zed-v1.4.0.darwin-amd64.tar.gz"
-      sha256 "7fdf2b3501d47b5675b1ccbb562ad132ea9b1379cab30ff1b5d014d4f20dbca5"
+      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.darwin-amd64.tar.gz"
+      sha256 "d8e18ac5711a3b5c35c763175bc58746a6bed6539484df8e1494d12b238c78c0"
 
       def install
         bin.install "zq"
@@ -30,17 +30,17 @@ query language.
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.4.0/zed-v1.4.0.linux-arm64.tar.gz"
-      sha256 "fe1df843588d0f14789822f8217bbee639113857c7cf82a718e79f28723eb754"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.linux-amd64.tar.gz"
+      sha256 "25c9f6cfa2141b615e2cb7632d0813b3b367944d1bf82ccc6689dfe5ae65a44e"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.4.0/zed-v1.4.0.linux-amd64.tar.gz"
-      sha256 "4ae49399f26defe97bd042c20c087ff9c2093843bcd993bba0221228b0216190"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.linux-arm64.tar.gz"
+      sha256 "d3778f106cf25726c1fdca30d28a232cf843838cad80fb987e832aabd8f18022"
 
       def install
         bin.install "zq"
