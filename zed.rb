@@ -7,20 +7,20 @@ class Zed < Formula
 and orchestrating Zed data lakes.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.5.0"
+  version "1.6.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.darwin-arm64.tar.gz"
-      sha256 "dbd3722c5d2b022f974ad1499ed49136aaaf806f67cc9373d2d749c05745b88b"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.6.0/zed-v1.6.0.darwin-amd64.tar.gz"
+      sha256 "3415d6ebd84292f7606f6867c78afc557a68a49b9bedaaaecd0839d3679421f7"
 
       def install
         bin.install "zed"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.darwin-amd64.tar.gz"
-      sha256 "d8e18ac5711a3b5c35c763175bc58746a6bed6539484df8e1494d12b238c78c0"
+    if Hardware::CPU.arm?
+      url "https://github.com/brimdata/zed/releases/download/v1.6.0/zed-v1.6.0.darwin-arm64.tar.gz"
+      sha256 "f06bc68a1d19561a78b14423f69cd4f6ee1aa1c8b8282d4a416588a3079dcf84"
 
       def install
         bin.install "zed"
@@ -29,17 +29,17 @@ and orchestrating Zed data lakes.
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.linux-amd64.tar.gz"
-      sha256 "25c9f6cfa2141b615e2cb7632d0813b3b367944d1bf82ccc6689dfe5ae65a44e"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brimdata/zed/releases/download/v1.6.0/zed-v1.6.0.linux-arm64.tar.gz"
+      sha256 "4b9fd153d34af6f16bba1149177e2c3e31a3898984549a6314226e8d120f455d"
 
       def install
         bin.install "zed"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.5.0/zed-v1.5.0.linux-arm64.tar.gz"
-      sha256 "d3778f106cf25726c1fdca30d28a232cf843838cad80fb987e832aabd8f18022"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.6.0/zed-v1.6.0.linux-amd64.tar.gz"
+      sha256 "be16eeffba8cea1589b69616652a6966b62b2508b97dd4b5e4f3a1ef280f1763"
 
       def install
         bin.install "zed"
