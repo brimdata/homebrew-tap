@@ -7,20 +7,20 @@ class Zed < Formula
 and orchestrating Zed data lakes.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.8.0"
+  version "1.8.1"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.8.0/zed-v1.8.0.darwin-arm64.tar.gz"
-      sha256 "21d468c1a79bf711172c74cc6f72c12365f74ccf3dfd5ac7f8b23d7c20f536d7"
+      url "https://github.com/brimdata/zed/releases/download/v1.8.1/zed-v1.8.1.darwin-arm64.tar.gz"
+      sha256 "3e004c69c454dd6f34dfd015ba681c9a70ebb6f617aae69f7e900f58833498ff"
 
       def install
         bin.install "zed"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.8.0/zed-v1.8.0.darwin-amd64.tar.gz"
-      sha256 "a162f0be131ab03c7bf4d74b197a0c374da8a6549c34db9402481261f703430e"
+      url "https://github.com/brimdata/zed/releases/download/v1.8.1/zed-v1.8.1.darwin-amd64.tar.gz"
+      sha256 "f4b7a5b5fa2ea4dbbd551ac4af7dbad8fb255737f6f671b78927310fb17be213"
 
       def install
         bin.install "zed"
@@ -30,16 +30,16 @@ and orchestrating Zed data lakes.
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.8.0/zed-v1.8.0.linux-arm64.tar.gz"
-      sha256 "0bf6ed7adaa5828379d2284900d59fb5b42cd7fb96c791be3b410cf46b25134f"
+      url "https://github.com/brimdata/zed/releases/download/v1.8.1/zed-v1.8.1.linux-arm64.tar.gz"
+      sha256 "7237a7d0bff936a977807ff6fbe4305ab979655454684339522c4a6ed7cb645c"
 
       def install
         bin.install "zed"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.8.0/zed-v1.8.0.linux-amd64.tar.gz"
-      sha256 "c9246e7075e31c2aed412f89a0c6b25ecd6e6da59bd46c079f5f64e43f58024c"
+      url "https://github.com/brimdata/zed/releases/download/v1.8.1/zed-v1.8.1.linux-amd64.tar.gz"
+      sha256 "738d692d1e0e603a781d9bea08883f29a7eb01ff6cdcb2715543bb652e1beba9"
 
       def install
         bin.install "zed"
