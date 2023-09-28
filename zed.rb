@@ -7,20 +7,20 @@ class Zed < Formula
 and orchestrating Zed data lakes.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.9.0"
+  version "1.10.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.9.0/zed-v1.9.0.darwin-amd64.tar.gz"
-      sha256 "80899bde5f26e5f5798c3fc7ac29f1fa4784ff24a7535c1fb6693bf0948ef8dc"
+      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.darwin-amd64.tar.gz"
+      sha256 "09c618606a444ee05d84d773fc4cb32968873abbeb8cad22bfe01046a4aef360"
 
       def install
         bin.install "zed"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.9.0/zed-v1.9.0.darwin-arm64.tar.gz"
-      sha256 "2b45eccd0bd49a1cb00dfec072956863ed1247e5e08d1e3593030cb54a31884d"
+      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.darwin-arm64.tar.gz"
+      sha256 "3bba4a03bd3629c2ad230a30a7f44e9d2f91d64870aa6d7f9bec6b0ed2419002"
 
       def install
         bin.install "zed"
@@ -29,17 +29,17 @@ and orchestrating Zed data lakes.
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.9.0/zed-v1.9.0.linux-arm64.tar.gz"
-      sha256 "c63e2382f6ae34c896048191796037dfe5a39191251f522943a78e59eb1c2d15"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.linux-amd64.tar.gz"
+      sha256 "fd807e77e4b918d5c43a94e0833d1496b47f54548797978253b162be8c6f1aba"
 
       def install
         bin.install "zed"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.9.0/zed-v1.9.0.linux-amd64.tar.gz"
-      sha256 "cf7a12d5825fe42e3908ce49fa551266782285dad4b886f3712ef447d942af9c"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.linux-arm64.tar.gz"
+      sha256 "297be19d23805f012c7b186790b91b856efd7f7f56d381f0452c2983b681d124"
 
       def install
         bin.install "zed"
