@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.10.0"
+  version "1.11.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.darwin-amd64.tar.gz"
-      sha256 "09c618606a444ee05d84d773fc4cb32968873abbeb8cad22bfe01046a4aef360"
+    if Hardware::CPU.arm?
+      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.darwin-arm64.tar.gz"
+      sha256 "03f476397bc5d539fe3e2e4b8ba6b6e3ac36deefb2480c2a462294de76a25feb"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.darwin-arm64.tar.gz"
-      sha256 "3bba4a03bd3629c2ad230a30a7f44e9d2f91d64870aa6d7f9bec6b0ed2419002"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.darwin-amd64.tar.gz"
+      sha256 "882a4dcc8b5080ef0861d3ad8a16120b8c23fc3f432a19eb8992f11cf7964cc1"
 
       def install
         bin.install "zq"
@@ -30,17 +30,17 @@ query language.
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.linux-amd64.tar.gz"
-      sha256 "fd807e77e4b918d5c43a94e0833d1496b47f54548797978253b162be8c6f1aba"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.linux-arm64.tar.gz"
+      sha256 "d86c525892d0f5541f69e2096234451b4d6df36fcaa9081871425b85580a30b2"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.10.0/zed-v1.10.0.linux-arm64.tar.gz"
-      sha256 "297be19d23805f012c7b186790b91b856efd7f7f56d381f0452c2983b681d124"
+    if Hardware::CPU.intel?
+      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.linux-amd64.tar.gz"
+      sha256 "2722c57a4a0f9a31e3018761fa848ed63a33ad6e95c041396be17f3b6aefd248"
 
       def install
         bin.install "zq"
