@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.11.0"
+  version "1.11.1"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.darwin-arm64.tar.gz"
-      sha256 "03f476397bc5d539fe3e2e4b8ba6b6e3ac36deefb2480c2a462294de76a25feb"
+      url "https://github.com/brimdata/zed/releases/download/v1.11.1/zed-v1.11.1.darwin-arm64.tar.gz"
+      sha256 "d077757edf1a944068a7b76d6ce7ba6563273421482420347afa65351747d427"
 
       def install
         bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.darwin-amd64.tar.gz"
-      sha256 "882a4dcc8b5080ef0861d3ad8a16120b8c23fc3f432a19eb8992f11cf7964cc1"
+      url "https://github.com/brimdata/zed/releases/download/v1.11.1/zed-v1.11.1.darwin-amd64.tar.gz"
+      sha256 "c6b1902332ed1e2757ebc589327009bcd5e2dcc0cecf0fc2dfaf8761a63baf9a"
 
       def install
         bin.install "zq"
@@ -31,16 +31,16 @@ query language.
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.linux-arm64.tar.gz"
-      sha256 "d86c525892d0f5541f69e2096234451b4d6df36fcaa9081871425b85580a30b2"
+      url "https://github.com/brimdata/zed/releases/download/v1.11.1/zed-v1.11.1.linux-arm64.tar.gz"
+      sha256 "013f0232bd1411965f1bede88b46cdc7191f97cb3d8313f6f4f499188d2e8458"
 
       def install
         bin.install "zq"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.11.0/zed-v1.11.0.linux-amd64.tar.gz"
-      sha256 "2722c57a4a0f9a31e3018761fa848ed63a33ad6e95c041396be17f3b6aefd248"
+      url "https://github.com/brimdata/zed/releases/download/v1.11.1/zed-v1.11.1.linux-amd64.tar.gz"
+      sha256 "2058cb2889d710cee442275be8911ed1bfb0c15aac0106c346c6c887951d4381"
 
       def install
         bin.install "zq"
