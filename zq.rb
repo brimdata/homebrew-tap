@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.15.0"
+  version "1.16.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/brimdata/zed/releases/download/v1.15.0/zed-v1.15.0.darwin-arm64.tar.gz"
-      sha256 "a4988534da4c87cbd05fd3c2c31b72f1d7a867ce1f43bfa96f36733a017bbe11"
+    on_intel do
+      url "https://github.com/brimdata/zed/releases/download/v1.16.0/zed-v1.16.0.darwin-amd64.tar.gz"
+      sha256 "6a6c00b9b4639dec5400105551ccd2c5a681379a7be0d370cd4609043c45c952"
 
       def install
         bin.install "zq"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.15.0/zed-v1.15.0.darwin-amd64.tar.gz"
-      sha256 "e16b13114882014bea15f268ddd2c994f73a77aca4265d8292293c688baf5bdc"
+    on_arm do
+      url "https://github.com/brimdata/zed/releases/download/v1.16.0/zed-v1.16.0.darwin-arm64.tar.gz"
+      sha256 "4ce2cc17bea9990fc5aa2ac6bebf42f6bcd81fedc6262496ec8bc8d06c3424c5"
 
       def install
         bin.install "zq"
@@ -30,20 +30,24 @@ query language.
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/brimdata/zed/releases/download/v1.15.0/zed-v1.15.0.linux-arm64.tar.gz"
-      sha256 "99ebc13d6a4e716277dd08b55eaf5f32aa5dd6c2dcaec09d85bc75fbbadb1b34"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/brimdata/zed/releases/download/v1.16.0/zed-v1.16.0.linux-amd64.tar.gz"
+        sha256 "3ef0c59e1d14c83464ec05174109f7ff6a0a0c1cba36f8703036b3e76b9769e2"
 
-      def install
-        bin.install "zq"
+        def install
+          bin.install "zq"
+        end
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/brimdata/zed/releases/download/v1.15.0/zed-v1.15.0.linux-amd64.tar.gz"
-      sha256 "8193d01c4050e4a22979f7da70faa6b5e5fb3ae959132248ae07c29aa206e2cd"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/brimdata/zed/releases/download/v1.16.0/zed-v1.16.0.linux-arm64.tar.gz"
+        sha256 "444cd69779ed20a3badf722524d359457f1bfc7e7e198c761383d35af1f2f789"
 
-      def install
-        bin.install "zq"
+        def install
+          bin.install "zq"
+        end
       end
     end
   end
