@@ -8,20 +8,20 @@ providing search, analytics, and extensive transormations using the Zed
 query language.
 "
   homepage "https://github.com/brimdata/zed"
-  version "1.17.0"
+  version "1.18.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/brimdata/zed/releases/download/v1.17.0/zed-v1.17.0.darwin-amd64.tar.gz"
-      sha256 "f48e4ef4982264d18a00d2dabf49d270e9ebe9d61da0f110175f55283e325a21"
+      url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.darwin-amd64.tar.gz"
+      sha256 "3cfb3c37edf0793ca75a47df73f4be77ce6e534bfe7d103283b9391c279df2cd"
 
       def install
         bin.install "zq"
       end
     end
     on_arm do
-      url "https://github.com/brimdata/zed/releases/download/v1.17.0/zed-v1.17.0.darwin-arm64.tar.gz"
-      sha256 "28b932891d7d90b9336be7de4d7b4f0dbf280b652f96a48b9d3f6074d29b40ed"
+      url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.darwin-arm64.tar.gz"
+      sha256 "b7af92d873f6486b2dab852093e0a94b4250dead5cf072dede098acbe1765b14"
 
       def install
         bin.install "zq"
@@ -32,8 +32,8 @@ query language.
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/brimdata/zed/releases/download/v1.17.0/zed-v1.17.0.linux-amd64.tar.gz"
-        sha256 "c179da8afbe70eb37fa0018e77f43cc39e734879803c0fb30e120b928b102138"
+        url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.linux-amd64.tar.gz"
+        sha256 "3f9c61d28e08aaff03cbeaadceb08da36296055b835182d1a6c50c401271060f"
 
         def install
           bin.install "zq"
@@ -42,8 +42,8 @@ query language.
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/brimdata/zed/releases/download/v1.17.0/zed-v1.17.0.linux-arm64.tar.gz"
-        sha256 "3480900fd8d33e0d20bdb82e3f2d9d89d66e472de76b2c7424aa903783e3fbeb"
+        url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.linux-arm64.tar.gz"
+        sha256 "dfa109865e2d5d7c2b6c6b36b2b763bd3e2e34f74ea6cbcf7fc18c266a48f88a"
 
         def install
           bin.install "zq"
