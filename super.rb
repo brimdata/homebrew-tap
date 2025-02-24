@@ -1,9 +1,9 @@
 class Super < Formula
   desc "Query and search data in files or SuperDB data lakes"
   homepage "https://superdb.org"
-  url "https://github.com/brimdata/super/archive/55d99d3.zip"
-  sha256 "e286e4c49f1b3069ae2112395f1165863c806afcb51087d7ae2f162b063ab48e"
-  version "55d99d3"
+  url "https://github.com/brimdata/super/archive/f55d7bd.zip"
+  sha256 "421c8310c440e9e0375df5e65e7886da4e0a7714a1181e29f4a1ae2d055ab84a"
+  version "f55d7bd"
 
   depends_on "go@1.23" => :build
 
@@ -11,7 +11,7 @@ class Super < Formula
     ENV["GOPATH"] = buildpath
     (buildpath/"build/src").mkpath
     ln_s buildpath, buildpath/"build/src/github.com"
-    system "GOPATH=$PWD/build go install github.com/brimdata/super/cmd/super@55d99d3"
+    system "GOPATH=$PWD/build go install github.com/brimdata/super/cmd/super@f55d7bd"
     bin.install "build/bin/super"
   end
 end
