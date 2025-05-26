@@ -7,12 +7,12 @@ class Zq < Formula
 providing search, analytics, and extensive transormations using the Zed
 query language.
 "
-  homepage "https://github.com/brimdata/zed"
+  homepage "https://github.com/brimdata/zed-archive"
   version "1.18.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.darwin-amd64.tar.gz"
+      url "https://github.com/brimdata/zed-archive/releases/download/v1.18.0/zed-v1.18.0.darwin-amd64.tar.gz"
       sha256 "3cfb3c37edf0793ca75a47df73f4be77ce6e534bfe7d103283b9391c279df2cd"
 
       def install
@@ -20,7 +20,7 @@ query language.
       end
     end
     on_arm do
-      url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.darwin-arm64.tar.gz"
+      url "https://github.com/brimdata/zed-archive/releases/download/v1.18.0/zed-v1.18.0.darwin-arm64.tar.gz"
       sha256 "b7af92d873f6486b2dab852093e0a94b4250dead5cf072dede098acbe1765b14"
 
       def install
@@ -32,7 +32,7 @@ query language.
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.linux-amd64.tar.gz"
+        url "https://github.com/brimdata/zed-archive/releases/download/v1.18.0/zed-v1.18.0.linux-amd64.tar.gz"
         sha256 "3f9c61d28e08aaff03cbeaadceb08da36296055b835182d1a6c50c401271060f"
 
         def install
@@ -42,7 +42,7 @@ query language.
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/brimdata/zed/releases/download/v1.18.0/zed-v1.18.0.linux-arm64.tar.gz"
+        url "https://github.com/brimdata/zed-archive/releases/download/v1.18.0/zed-v1.18.0.linux-arm64.tar.gz"
         sha256 "dfa109865e2d5d7c2b6c6b36b2b763bd3e2e34f74ea6cbcf7fc18c266a48f88a"
 
         def install
