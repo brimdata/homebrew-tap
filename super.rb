@@ -1,5 +1,5 @@
 class Super < Formula
-  desc "A new analytics database that fuses structured and semi-structured data"
+  desc "An analytics database that fuses structured and semi-structured data"
   homepage "https://superdb.org"
   url "https://github.com/brimdata/super/archive/4130d71.zip"
   sha256 "3310943cf50523b83c9e5d0a0107f61e03c3f3462d52ab4f48e1c7b62a44cdfa"
