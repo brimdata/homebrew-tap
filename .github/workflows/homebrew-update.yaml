@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout homebrew-tap
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.PAT_TOKEN }}
       - name: Checkout super
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: brimdata/super
           path: super
