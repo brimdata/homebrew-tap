@@ -13,40 +13,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
-          fetch-depth: 0    
       - name: Checkout super
         uses: actions/checkout@v4
         with:
           repository: brimdata/super
-          fetch-depth: 0
           path: super
-      - name: Get current super main commit SHA
-        id: current
-        run: |
-          cd super
-          CURRENT_SHA=$(git rev-parse origin/main)
-          echo "sha=$CURRENT_SHA" >> $GITHUB_OUTPUT
-      - name: Restore previous commit SHA
-        id: cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .commit-sha
-          key: main-commit-${{ steps.current.outputs.sha }}
-          restore-keys: |
-            main-commit-
       - name: Check if super main has changed
         id: changed
         run: |
-          if [ -f .commit-sha ]; then
-            PREVIOUS_SHA=$(cat .commit-sha)
-            if [ "$PREVIOUS_SHA" != "${{ steps.current.outputs.sha }}" ]; then
-              echo "changed=true" >> $GITHUB_OUTPUT
-            else
-              echo "changed=false" >> $GITHUB_OUTPUT
-            fi
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
+          ( [ ! -f Casks/super.rb ] || [ $(awk '/version/ {print $2}' Casks/super.rb | head -1 | tr -d '"') != $(git -C super rev-parse --short HEAD | cut -c1-7) ] ) && echo "changed=true" >> $GITHUB_OUTPUT || true
       - uses: actions/setup-go@v5
         with:
           go-version-file: super/go.mod
@@ -66,8 +41,7 @@ jobs:
       - name: Upload artifacts to S3 bucket
         if: steps.changed.outputs.changed == 'true'
         run: |
-          sha_hash=${{ steps.current.outputs.sha }}
-          short_hash=${sha_hash:0:9}
+          short_hash=$(git -C super rev-parse --short HEAD)
           for artifact in super/dist/super-${short_hash}*; do aws s3 cp $artifact s3://super-prereleases/${short_hash}/ ; done
       - name: Save updated Cask to Homebrew tap repo
         if: steps.changed.outputs.changed == 'true'
@@ -77,14 +51,5 @@ jobs:
           git config --global user.name 'Brim Automation'
           git config --global user.email 'automation@brimdata.com'
           git add Casks/super.rb
-          git commit -am "update super Homebrew Cask to ${{ steps.current.outputs.sha }}" || true
+          git commit -am "update super Homebrew Cask to $(git -C super rev-parse --short HEAD)" || true
           git push
-      - name: Save current commit SHA
-        if: steps.changed.outputs.changed == 'true'
-        run: echo "${{ steps.current.outputs.sha }}" > .commit-sha
-      - name: Save commit SHA cache
-        if: steps.changed.outputs.changed == 'true'
-        uses: actions/cache/save@v4
-        with:
-          path: .commit-sha
-          key: main-commit-${{ steps.current.outputs.sha }}
