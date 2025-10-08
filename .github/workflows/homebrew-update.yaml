@@ -1,0 +1,90 @@
+name: "Update SuperDB Homebrew Cask"
+
+on:
+  schedule:
+    - cron: '5 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-update:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout homebrew-tap
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0    
+      - name: Checkout super
+        uses: actions/checkout@v4
+        with:
+          repository: brimdata/super
+          fetch-depth: 0
+          path: super
+      - name: Get current super main commit SHA
+        id: current
+        run: |
+          cd super
+          CURRENT_SHA=$(git rev-parse origin/main)
+          echo "sha=$CURRENT_SHA" >> $GITHUB_OUTPUT
+      - name: Restore previous commit SHA
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .commit-sha
+          key: main-commit-${{ steps.current.outputs.sha }}
+          restore-keys: |
+            main-commit-
+      - name: Check if super main has changed
+        id: changed
+        run: |
+          if [ -f .commit-sha ]; then
+            PREVIOUS_SHA=$(cat .commit-sha)
+            if [ "$PREVIOUS_SHA" != "${{ steps.current.outputs.sha }}" ]; then
+              echo "changed=true" >> $GITHUB_OUTPUT
+            else
+              echo "changed=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: super/go.mod
+          cache-dependency-path: super/go.sum
+      - name: Build new artifacts if super changed since last run
+        if: steps.changed.outputs.changed == 'true'
+        uses: goreleaser/goreleaser-action@v6
+        with:
+          workdir: super
+          args: release --config=${{ github.workspace }}/.super-prerelease-cask-goreleaser.yaml --snapshot --clean
+      - uses: aws-actions/configure-aws-credentials@v5
+        if: steps.changed.outputs.changed == 'true'
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: Upload artifacts to S3 bucket
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          sha_hash=${{ steps.current.outputs.sha }}
+          short_hash=${sha_hash:0:9}
+          for artifact in super/dist/super-${short_hash}*; do aws s3 cp $artifact s3://super-prereleases/${short_hash}/ ; done
+      - name: Save updated Cask to Homebrew tap repo
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          mkdir -p Casks
+          cp super/dist/homebrew/Casks/super.rb Casks
+          git config --global user.name 'Brim Automation'
+          git config --global user.email 'automation@brimdata.com'
+          git add Casks/super.rb
+          git commit -am "update super Homebrew Cask to ${{ steps.current.outputs.sha }}" || true
+          git push
+      - name: Save current commit SHA
+        if: steps.changed.outputs.changed == 'true'
+        run: echo "${{ steps.current.outputs.sha }}" > .commit-sha
+      - name: Save commit SHA cache
+        if: steps.changed.outputs.changed == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .commit-sha
+          key: main-commit-${{ steps.current.outputs.sha }}
