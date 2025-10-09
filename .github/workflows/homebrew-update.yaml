@@ -21,7 +21,7 @@ jobs:
       - name: Check if super main has changed
         id: changed
         run: |
-          ( [ ! -f Casks/super.rb ] || [ $(awk '/version/ {print $2}' Casks/super.rb | head -1 | tr -d '"') != $(git -C super rev-parse --short HEAD | cut -c1-7) ] ) && echo "changed=true" >> $GITHUB_OUTPUT || true
+          ( [ ! -f Casks/super.rb ] || [ $(awk '/version/ {print $2}' Casks/super.rb | head -1 | tr -d '"') != $(git -C super rev-parse --short=7 HEAD) ] ) && echo "changed=true" >> $GITHUB_OUTPUT || true
       - uses: actions/setup-go@v5
         with:
           go-version-file: super/go.mod
