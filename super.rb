@@ -1,17 +1,16 @@
 class Super < Formula
-  desc "An analytics database that fuses structured and semi-structured data"
+  desc "Deprecated - use 'brew install --cask brimdata/tap/super' instead"
   homepage "https://superdb.org"
-  url "https://github.com/brimdata/super/archive/4130d71.zip"
-  sha256 "3310943cf50523b83c9e5d0a0107f61e03c3f3462d52ab4f48e1c7b62a44cdfa"
-  version "4130d71"
-
-  depends_on "go@1.24" => :build
+  url "https://raw.githubusercontent.com/brimdata/super/refs/heads/main/LICENSE.txt"
+  sha256 "1b37b0c058da81d58ff531c34a564078588849614ee0afd48cccb99c7747ebcf"
+  version "9999999"
 
   def install
-    ENV["GOPATH"] = buildpath
-    (buildpath/"build/src").mkpath
-    ln_s buildpath, buildpath/"build/src/github.com"
-    system "GOPATH=$PWD/build go install github.com/brimdata/super/cmd/super@4130d71"
-    bin.install "build/bin/super"
+    (bin/"super").write <<~EOS
+      #!/bin/bash
+      echo "This formula has been replaced by a cask."
+      echo "Please run: brew uninstall --force super && brew install --cask brimdata/tap/super"
+      exit 1
+    EOS
   end
 end
