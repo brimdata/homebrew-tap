@@ -4,7 +4,7 @@ cask "super" do
   desc "An analytics database that fuses structured and semi-structured data
 "
   homepage "https://github.com/brimdata/super"
-  version "0dd749d"
+  version "03130ef"
 
   livecheck do
     skip "Auto-generated on release."
@@ -15,22 +15,22 @@ cask "super" do
   on_macos do
     on_intel do
       url "https://super-prereleases.s3.us-east-2.amazonaws.com/#{version}/super-#{version}.darwin-amd64.tar.gz"
-      sha256 "bb2218a2272d2a0ffcf50ecd06a659eaa00b1936de11ade3e8ea346d33475542"
+      sha256 "0ac4614f075731b809008a7234042d339c8aaba8b992b3f1f80d8c0c055a2417"
     end
     on_arm do
       url "https://super-prereleases.s3.us-east-2.amazonaws.com/#{version}/super-#{version}.darwin-arm64.tar.gz"
-      sha256 "f55387b50a89abf10342a4066d0279b99a848fb3f3cea4fd09dab76f1661b430"
+      sha256 "05ab3ee32f019819d684c87cda51ad055ade273c8999873dc32c94f88be3c0da"
     end
   end
 
   on_linux do
     on_intel do
       url "https://super-prereleases.s3.us-east-2.amazonaws.com/#{version}/super-#{version}.linux-amd64.tar.gz"
-      sha256 "cf06a53733b36c2dfb7009a564563b9304f09d86c891d39f3f4cf15f7aa213cf"
+      sha256 "5eec0954db39077ab4fe38d6af6c64350498f00b454b4725620abc00ed8d36f3"
     end
     on_arm do
       url "https://super-prereleases.s3.us-east-2.amazonaws.com/#{version}/super-#{version}.linux-arm64.tar.gz"
-      sha256 "76ac9e0deb0ae2e5cf86a875b03c284297137a64aec4a0d5291959b4377b635a"
+      sha256 "f7c33052cdf32801f21302d91ed6aa8951d4d8320863ccd941977ff05bd52ea8"
     end
   end
 
