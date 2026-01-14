@@ -7,7 +7,7 @@ builds:
     env:
       - CGO_ENABLED=0
     ldflags:
-      - -s -X github.com/brimdata/super/cli.version={{ .ShortCommit }}
+      - '-s -X github.com/brimdata/super/cli.version=v0.0.0-{{ replace (replace (replace (replace .CommitDate "-" "") ":" "") "T" "") "Z" "" }}-{{ .ShortCommit }}'
     goarch:
       - amd64
       - arm64
@@ -16,7 +16,7 @@ builds:
       - windows
       - darwin
 archives:
-  - name_template: "{{ .ProjectName }}-{{ .ShortCommit }}.{{ .Os }}-{{ .Arch }}"
+  - name_template: "{{ .ProjectName }}-{{ .Version }}.{{ .Os }}-{{ .Arch }}"
     format_overrides:
       - goos: windows
         formats: [ "zip" ]
@@ -37,10 +37,10 @@ homebrew_casks:
     description: |
       An analytics database that fuses structured and semi-structured data
     url:
-      template: "https://super-prereleases.s3.us-east-2.amazonaws.com/{{ .ShortCommit }}/{{ .ArtifactName }}"
+      template: "https://super-prereleases.s3.us-east-2.amazonaws.com/{{ .Version }}/{{ .ArtifactName }}"
 checksum:
   name_template: 'super-checksums.txt'
 snapshot:
-  version_template: "{{ .ShortCommit }}"
+  version_template: 'v0.0.0-{{ replace (replace (replace (replace .CommitDate "-" "") ":" "") "T" "") "Z" "" }}-{{ .ShortCommit }}'
 changelog:
   disable: true
